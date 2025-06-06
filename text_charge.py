@@ -72,4 +72,4 @@ if __name__ == "__main__":
     # Remplacez 'votre_fichier.txt' ou 'votre_dossier' par le chemin réel
     result = process_text('requirements.txt')
     print(result)  # Affiche la liste de mots du fichier
-    # Pour un dossier, utilisez process_text('votre_dossier')
+    # Pour un dossier, utilisez process_text('votre_dossier')fvfcbcfbcfb
