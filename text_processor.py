@@ -1,69 +1,65 @@
-"""
-Fonctions pour lire le contenu de ﬁchiers texte (individuels ou d'un
-dossier).o
-o
-o
-Fonctions pour nettoyer le texte : convertir en minuscules,
-supprimer la ponctuation spéciﬁque, diviser le texte en mots
-(tokenisation).
-Gestion d'une collection de documents (ex : liste de chaînes, ou
-liste de listes de mots).
-Auto-apprentissage : Expressions régulières (basiques) pour le
-nettoyage avancé, gestion des encodages de ﬁchiers."""
+# === text_processor.py ===
+# Ce module contient les fonctions pour :
+# - Charger des fichiers texte (un seul fichier ou un dossier entier)
+# - Nettoyer le texte : convertir en minuscules, supprimer la ponctuation, etc.
+# - Diviser le texte en mots (tokenisation)
+# - Retourner une structure exploitable (liste de mots ou liste de documents)
+
 import os
 import re
-from collections import Counter
+def read_file(filepath):
+    """
+    Lit le contenu d'un fichier texte et retourne une chaîne de caractères.
+    À faire : gérer les erreurs de lecture (fichier introuvable, encodage).
+    """
+    try:
+        with open(filepath, 'r', encoding='utf-8') as file:
+            return file.read()
+    except FileNotFoundError:
+        print(f"Erreur : le fichier {filepath} n'a pas été trouvé.")
+        return ""
+    except Exception as e:
+        print(f"Erreur lors de la lecture du fichier {filepath} : {e}")
+        return ""
+    
+    pass
 
-def lire_fichiers_dossier(dossier):
+def read_folder(folder_path):
     """
-    Lit tous les fichiers texte dans un dossier et retourne leur contenu.
-    
-    :param dossier: str, le chemin du dossier contenant les fichiers texte.
-    :return: list, une liste de chaînes contenant le contenu de chaque fichier.
+    Lit tous les fichiers texte dans un dossier.
+    Retourne une liste de chaînes (chaque élément est un fichier).
     """
-    textes = []
-    for nom_fichier in os.listdir(dossier):
-        if nom_fichier.endswith('.txt'):
-            with open(os.path.join(dossier, nom_fichier), 'r', encoding='utf-8') as f:
-                textes.append(f.read())
-    return textes
+    if not os.path.isdir(folder_path):
+        print(f"Erreur : {folder_path} n'est pas un dossier valide.")
+        return []
+    documents = []
+    for filename in os.listdir(folder_path):
+        if filename.endswith('.txt'):
+            filepath = os.path.join(folder_path, filename)
+            content = read_file(filepath)
+            if content:
+                documents.append(content)
+    return documents   
+    pass   
 
-def nettoyer_texte(texte): 
+def clean_text(text):
     """
-    Nettoie le texte en le convertissant en minuscules, en supprimant la ponctuation et en tokenisant les mots.
-    
-    :param texte: str, le texte à nettoyer.
-    :return: list, une liste de mots nettoyés.
+    Nettoie le texte :
+    - Met en minuscules
+    - Supprime la ponctuation
+    - Gère les caractères spéciaux (accents, symboles)
+    Retourne une chaîne nettoyée.
     """
-    # Convertir en minuscules
-    texte = texte.lower()
-    
-    # Supprimer la ponctuation spécifique (ici on enlève tout sauf les lettres et les espaces)
-    texte = re.sub(r'[^\w\s]', '', texte)
-    
-    # Tokenisation : diviser le texte en mots
-    mots = texte.split()
-    
-    return mots
-def traiter_textes(textes):
+    text = text.lower()  # Convertir en minuscules
+    text = re.sub(r'[^\w\s]', '', text)  # Supprimer la ponctuation
+    text = re.sub(r'\s+', ' ', text).strip()  # Supprimer les espaces multiples et les espaces en début/fin
+    return text
+    pass
+
+def tokenize(text):
     """
-    Traite une liste de textes en nettoyant et en comptant la fréquence des mots.
+    Découpe le texte nettoyé en mots (liste de mots).
     """
-    """
-    :param textes: list, une liste de chaînes contenant les textes à traiter.
-    :return: Counter, un dictionnaire avec les mots comme clés et leurs fréquences comme valeurs.
-    """
-    mots_nettoyes = []
-    for texte in textes:
-        mots_nettoyes.extend(nettoyer_texte(texte))
-    
-    return Counter(mots_nettoyes)
-def afficher_mots_frequents(frequences, n=10):
-    """
-    Affiche les N mots les plus fréquents."""
-    mots_frequents = frequences.most_common(n)
-    for mot, freq in mots_frequents:
-        print(f"{mot}: {freq}")
-        
-def analyser_dossier(dossier, n=10):
-    
+    words = text.split()  # Diviser le texte en mots
+    return words
+    pass
