@@ -7,6 +7,7 @@
 
 import os
 import re
+
 def read_file(filepath):
     """
     Lit le contenu d'un fichier texte et retourne une chaîne de caractères.
