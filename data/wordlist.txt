@@ -1,0 +1,11 @@
+apple banana orange
+python is a programming language
+the snake is also called python
+I love writing code in Python
+Java is not JavaScript
+The quick brown fox jumps over the lazy dog
+This file contains a list of fruit: apple, mango, banana
+Do not confuse Python with a snake
+Some packages: numpy, pandas, matplotlib, pyflakes, pylint
+Testing keyword search functionality with some random words
+

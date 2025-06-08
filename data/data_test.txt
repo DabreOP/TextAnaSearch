@@ -1,0 +1,6 @@
+hello world
+python is fun
+learning python takes time
+writing scripts in python is powerful
+some people prefer Java or C++
+PyCharm and VSCode are IDEs

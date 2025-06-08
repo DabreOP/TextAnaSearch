@@ -12,7 +12,7 @@ def compute_frequencies(words):
     if not isinstance(words, list):
         raise ValueError("Les mots doivent être fournis sous forme de liste.")
     return Counter(words)
-    pass
+
 
 def top_n_words(freq_dict, n=10):
     """
@@ -24,15 +24,13 @@ def top_n_words(freq_dict, n=10):
     if not isinstance(n, int) or n <= 0:
         raise ValueError("N doit être un entier positif.")
     return freq_dict.most_common(n)
-    pass
 
 def display_top_words(top_words):
     """
     Affiche les mots les plus fréquents avec leur fréquence.
     """
-    if not isinstance(top_words, list):
-        raise ValueError("Les mots les plus fréquents doivent être fournis sous forme de liste.")
     for word, freq in top_words:
-        print(f"{word}: {freq} fois")
-        return None
-    pass
+        print(f"- {word}: {freq} fois")
+        
+
+
