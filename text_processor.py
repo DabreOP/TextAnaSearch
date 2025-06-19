@@ -5,7 +5,7 @@ Ce module contient les fonctions pour :
 - Charger des fichiers texte (un seul fichier ou un dossier entier)
 - Nettoyer le texte : convertir en minuscules, supprimer la ponctuation, etc.
 - Diviser le texte en mots (tokenisation)
-- Retourner une structure exploitable (liste de mots ou liste de documents)
+- Retourner une structure exploitable (liste de mots ou liste de documents..)
 """
 
 # text_processor.py
