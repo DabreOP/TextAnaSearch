@@ -1,6 +1,6 @@
 # === simple_indexer.py ===
 # Ce module construit un index pour retrouver les fichiers contenant un mot donné.
-# Il permet aussi de lister les lignes où le mot apparaît.
+# Il permet aussi de lister les lignes où le mot apparaît..
 import re
 
 from text_processor import clean_text, tokenize

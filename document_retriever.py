@@ -1,6 +1,6 @@
 # === document_retriever.py ===
 # Ce module recherche les documents contenant certains mots-clés
-# et les classe par pertinence.
+# et les classe par pertinence...
 
 def retrieve_documents(query_words, index, documents):
     """

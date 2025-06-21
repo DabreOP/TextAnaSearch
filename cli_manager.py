@@ -1,4 +1,5 @@
-# cli_manager.py
+# cli_manager.py----
+
 
 from text_processor import read_file, clean_text, tokenize
 from frequency_analyzer import compute_frequencies, top_n_words, display_top_words
@@ -11,6 +12,7 @@ documents = {}  # nom de fichier réel -> texte nettoyé
 
 
 def show_menu():
+    
     print("=== Menu Principal ===")
     print("1. Charger des fichiers")
     print("2. Analyse de fréquence")
@@ -24,7 +26,7 @@ def get_txt_files_or_dirs():
     root.withdraw()
 
     print("\nSouhaitez-vous charger :")
-    print("1. Un ou plusieurs fichiers .txt")
+    print("1. Un fichier .txt")
     print("2. Un dossier contenant des fichiers .txt")
     choix = input("Votre choix (1-2) : ")
 

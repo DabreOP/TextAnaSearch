@@ -1,6 +1,6 @@
 # === frequency_analyzer.py ===
 # Ce module calcule la fréquence des mots dans un texte ou une liste de documents.
-# Il permet aussi d’afficher les mots les plus fréquents.
+# Il permet aussi d’afficher les mots les plus fréquents..
 
 from collections import Counter
 
